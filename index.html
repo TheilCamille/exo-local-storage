@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock</title>
+</head>
+<body>
+    <form action="page2.html">
+        <input type="submit" value="Go :)"/>
+    </form>
+        <input onclick="myfunction()" type="submit" value="Click"/>
+        <input onclick="reset()" type="submit" value="Reset"/>
+    <progress id="yoyo"  max=100 value="1"></progress>
+    <p>Vous avez click ce bouton <span id="visites">1</span> fois</p>
+</body>
+<script type="text/javascript">
+    localStorage.setItem("Couleur", "Vert");
+    localStorage.setItem("Vert", "#40A457");
+
+
+   function myfunction() {
+        if (typeof localStorage != 'undefined') {
+
+            var nbclicks = localStorage.getItem('visites');
+
+            if (nbclicks != null) {
+
+                nbclicks = parseInt(nbclicks);
+            } else {
+                nbclicks = 1;
+            }
+
+            nbclicks++;
+
+            localStorage.setItem('visites', nbclicks);
+            document.getElementById("yoyo").value = nbclicks;
+
+            document.getElementById('visites').innerHTML = nbclicks;
+        } else {
+            alert("localStorage n'est pas supporté");
+        }
+    }
+
+    function reset() {
+       localStorage.clear();
+       location.reload();
+
+
+    }
+</script>
+</html>
